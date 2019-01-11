@@ -17,6 +17,16 @@ server.route({
     }
 });
 
+//Dynamic Route
+server.route({
+    method:'GET',
+    path:'/user/{name}',
+    handler: (request, h) => {
+
+        return 'Hello, ' + request.params.name;
+    }
+});
+
 // Start Server
 const init = async () => {
 
