@@ -28,25 +28,18 @@ server.route({
 });
 
 // Static Routes
-server.register(require('inert'), (err) => {
+const start = async () => {
 
-    if(err){
-        throw err;
-    }
+    await server.register(require('inert'));
 
     server.route({
         method: 'GET',
-        path: '/about',
-        handler: {
-            directory: {
-                path: 'public/about',
-                listing: true
-            }
+        path: '/about.html',
+        handler: function (request, h) {
+
+            return h.file('./public/about.html');
         }
     });
-
-
-});
 
 // Start Server
 const init = async () => {
