@@ -7,6 +7,15 @@ const server =  Hapi.Server(
     }
 );
 
+//Home Route
+server.route({
+    method:'GET',
+    path:'/',
+    handler: (request, h) => {
+
+        return '<h1>Hello, world!</h1>';
+    }
+});
 
 // Start Server
 const init = async () => {
