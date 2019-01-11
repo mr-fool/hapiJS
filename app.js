@@ -20,7 +20,7 @@ server.route({
 //Dynamic Route
 server.route({
     method:'GET',
-    path:'/{name}',
+    path:'/user/{name}',
     handler: (request, h) => {
 
         return 'Hello, ' + request.params.name;
@@ -40,6 +40,7 @@ const start = async () => {
             return h.file('./public/about.html');
         }
     });
+}
 
 // Start Server
 const init = async () => {
