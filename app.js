@@ -20,11 +20,32 @@ server.route({
 //Dynamic Route
 server.route({
     method:'GET',
-    path:'/user/{name}',
+    path:'/{name}',
     handler: (request, h) => {
 
         return 'Hello, ' + request.params.name;
     }
+});
+
+// Static Routes
+server.register(require('inert'), (err) => {
+
+    if(err){
+        throw err;
+    }
+
+    server.route({
+        method: 'GET',
+        path: '/about',
+        handler: {
+            directory: {
+                path: 'public/about',
+                listing: true
+            }
+        }
+    });
+
+
 });
 
 // Start Server
