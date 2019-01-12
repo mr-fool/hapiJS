@@ -40,6 +40,17 @@ const start = async () => {
             return h.file('./public/about.html');
         }
     });
+
+    server.route({
+        method: 'GET',
+        path: '/image',
+        handler: function (request, h) {
+
+            return h.file('./public/hapi.png');
+        }
+    });
+
+
 }
 
 // Start Server
