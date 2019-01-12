@@ -34,7 +34,7 @@ const start = async () => {
 
     server.route({
         method: 'GET',
-        path: '/about.html',
+        path: '/about',
         handler: function (request, h) {
 
             return h.file('./public/about.html');
@@ -44,7 +44,7 @@ const start = async () => {
 
 // Start Server
 const init = async () => {
-
+    await start();
     await server.start();
     console.log(`Server running at: ${server.info.uri}`);
 };
