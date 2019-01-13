@@ -1,4 +1,9 @@
 const Hapi = require('hapi');
+const mongoose = require('mongoose');
+mongoose.connect('mongodb://localhost:27017/hapidb', { useMongoClient: true })
+    .then(() => console.log('MongoDB connected...'))
+    .catch(err => console.error(err));
+
 // Init Server
 const server =  Hapi.Server(
     {
