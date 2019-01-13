@@ -10,8 +10,10 @@
   "license": "ISC",
   "dependencies": {
     "@types/hapi": "^17.8.2",
+    "handlebars": "^4.0.12",
     "hapi": "^17.8.1",
     "inert": "^5.1.2",
-    "require": "^2.4.20"
+    "require": "^2.4.20",
+    "vision": "^5.4.4"
   }
 }
