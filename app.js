@@ -1,8 +1,11 @@
 const Hapi = require('hapi');
 const mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost:27017/hapidb', { useMongoClient: true })
+mongoose.connect('mongodb://localhost/hapidb', {useNewUrlParser: true})
     .then(() => console.log('MongoDB connected...'))
     .catch(err => console.error(err));
+
+// Create Task Model
+const Task = mongoose.model('Task', {text:String});
 
 // Init Server
 const server =  Hapi.Server(
@@ -41,12 +44,16 @@ server.route({
     path:'/tasks',
     handler: (request, h) => {
 
-        return h.view('tasks',{
-                tasks:[
+        let tasks = Task.find((err, tasks) => {
+            console.log(tasks);
+            h.view('tasks', {
+                tasks:tasks
+                /*tasks:[
                     {text:'Task One'},
                     {text:'Task Two'},
                     {text:'Task Three'}
-                ]
+                ]*/
+            });
         });
     }
 });
